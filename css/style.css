@@ -1,0 +1,120 @@
+@font-face {
+	font-family: "basic";
+	src: url("../assets/fonts/basic-font.ttf");
+}
+
+@font-face {
+	font-family: "epic";
+	src: url("../assets/fonts/epic-font.ttf");
+}
+
+@font-face {
+	font-family: "matrix";
+	src: url("../assets/fonts/matrix-font.ttf");
+}
+
+:root {
+	--margin: 6px;
+
+	--background-1: hsl(225, 22%, 82%);
+	--background-2: hsl(225, 13%, 23%);
+	--background-3: hsl(225, 60%, 3%);
+	--green: hsl(102, 100%, 39%);
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+
+	margin: 0;
+	overflow: hidden;
+
+	font-family: basic;
+	text-transform: uppercase;
+	white-space: nowrap;
+	
+	user-select: none;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+.selectable {
+    user-select: unset;
+	-ms-user-select: unset;
+	-moz-user-select: unset;
+	-khtml-user-select: unset;
+	-webkit-user-select: unset;
+}
+
+.screen {
+	position: absolute;
+	width: calc(100% - var(--margin)*4);
+	height: calc(100% - var(--margin)*4);
+	padding: calc(var(--margin) * 2);
+
+	display: none;
+}
+
+#screen-input-radio:checked ~ .screen-input {
+	display: flex;
+}
+
+#screen-settings-radio:checked ~ .screen-settings {
+	display: grid;
+}
+
+#screen-matrix-radio:checked ~ .screen-matrix {
+	display: flex;
+}
+
+#screen-matrix-pause-radio:checked ~ .screen-matrix {
+	display: flex;
+}
+
+.btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	padding: 0 var(--margin) 0 var(--margin);
+	border: 1px solid darkgrey;
+
+	font-size: 23px;
+
+	background-color: hsl(0, 0%, 94%);
+
+	cursor: pointer;
+}
+
+.btn:hover {
+	border: 1px solid grey;
+	background-color: hsl(0, 0%, 90%);
+}
+
+.btn:active {
+	background-color: hsl(0, 0%, 96%);
+}
+
+.btn-back {
+
+}
+
+.btn-next {
+
+}
+
+input[type="radio"], input[type="checkbox"] {
+	position: absolute;
+	width: 0;
+    height: 0;
+
+	opacity: 0;
+}
+
+/*@keyframes screen-slide {
+
+}*/

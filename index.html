@@ -1,0 +1,106 @@
+<!doctype html>
+
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+		<title>Matrix</title>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/input.css">
+        <link rel="stylesheet" type="text/css" href="css/settings.css">
+        <link rel="stylesheet" type="text/css" href="css/matrix.css">
+	</head>
+
+	<body onload="init()" onresize="resize()">
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/input.js"></script>
+        <script type="text/javascript" src="js/settings.js"></script>
+        <script type="text/javascript" src="js/matrix.js"></script>
+        <script type="text/javascript" src="js/render.js"></script>
+
+		<input type="radio" id="screen-input-radio" name="screen" tabindex="-1" checked>
+		<input type="radio" id="screen-settings-radio" name="screen" tabindex="-1">
+        <input type="radio" id="screen-matrix-radio" name="screen" tabindex="-1">
+
+        <div class="screen screen-input">
+            <div class="screen-input-content">
+                <input type="checkbox" id="characters-correction-checkbox" tabindex="-1">
+                <input type="checkbox" id="characters-correction-info-checkbox" tabindex="-1">
+
+                <div class="input-info">0/50</div>
+
+                <input type="text" class="characters-input selectable" maxlength="50" spellcheck="false" oninput="updateInput()">
+
+                <div class="characters-input-btns">
+                    <input type="checkbox" id="characters-input-checkbox" tabindex="-1">
+                    <div class="btn characters-clear-input" onclick="clearInput()">
+                        <span>clr</span>
+                    </div>
+
+                    <div for="screen-settings-radio" class="btn btn-next btn-next-settings" onclick="chooseCharacters()">
+                        <span>choose</span>
+                    </div>
+
+                    <label for="characters-correction-info-checkbox" class="btn characters-correction">
+                        <span>!</span>
+                    </label>
+                </div>
+
+                <div class="characters-correction-info">spaces and unsupported characters will be deleted</div>
+            </div>
+        </div>
+
+        <div class="screen screen-settings">
+            <input type="checkbox" id="matrix-font-checkbox" tabindex="-1">
+
+            <div class="characters-info">
+                <span class="info">characters</span>
+                <div class="characters"></div>
+            </div>
+
+            <div class="characters-size">
+                <div class="wrapper">
+                    <span class="info">font size</span class="info">
+                    <input type="number" class="characters-size-input selectable" maxlength="2" min="5" max="50" value="42" oninput="updateSize()">
+                </div>
+            </div>
+
+            <div class="characters-font">
+                <div class="wrapper">
+                    <span class="info">matrix font</span>
+
+                    <label for="matrix-font-checkbox" class="switch" onclick="switchFont()">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="characters-settings-btns">
+                <label for="screen-matrix-radio" class="btn btn-next btn-next-matrix" onclick="confirmSettings()">
+                    <span>matrix</span>
+                </label>
+
+                <label for="screen-input-radio" class="btn btn-back btn-back-input">
+                    <span>input</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="screen screen-matrix">
+            <input type="checkbox" id="pause-checkbox" tabindex="-1" onchange="pause()">
+
+            <label for="screen-settings-radio" class="btn btn-back btn-back-settings">
+                <span>settings</span>
+            </label>
+
+            <label for="pause-checkbox" class="canvas-wrapper">
+                <canvas id="canvas-matrix"></canvas>
+            </label>
+        </div>
+	</body>
+</html>
