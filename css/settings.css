@@ -1,4 +1,8 @@
 .screen-settings {
+    --settingsElementHeight: 42px;
+    --settingsElementWidth: 260px;
+    --fontSizeCoeff: 1;
+
     gap: var(--margin);
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
@@ -15,7 +19,7 @@
 
     border-radius: 10px;
 
-    font-size: 23px;
+    font-size: calc(23px * var(--fontSizeCoeff));
     text-align: center;
 
     background-color: hsl(240, 3%, 65%);
@@ -32,14 +36,14 @@
 
 .characters-info .info {
     width: fit-content;
-    font-size: 42px;
+    font-size: calc(42px * var(--fontSizeCoeff));
 }
 
 .characters {
     width: 100%;
 
     font-family: epic;
-    font-size: 54px;
+    font-size: calc(54px * var(--fontSizeCoeff));
     line-height: 69px;
     white-space: normal;
     word-break: break-all;
@@ -52,7 +56,7 @@
 }
 
 .wrapper {
-    width: min(260px, 100% - 12px);
+    width: min(var(--settingsElementWidth), 100% - 12px);
     height: fit-content;
 
     display: flex;
@@ -70,17 +74,17 @@
 
 .characters-size .wrapper .info {
     width: calc(100% - var(--margin)*2);
-    height: 42px;
+    height: var(--settingsElementHeight);
 
-    line-height: 42px;
+    line-height: var(--settingsElementHeight);
 }
 
 .characters-size-input {
     width: min(70px, 100%);
-    height: 36px;
+    height: calc(var(--settingsElementHeight) - 6px);
     
     font-family: basic;
-    font-size: 38px;
+    font-size: calc(38px * var(--fontSizeCoeff));
     text-align: center;
 }
 
@@ -93,14 +97,14 @@
 
 .characters-font .wrapper .info {
     width: calc(100% - var(--margin)*2);
-    height: 42px;
+    height: var(--settingsElementHeight);
 
-    line-height: 42px;
+    line-height: var(--settingsElementHeight);
 }
 
 .switch {
-	--slider-size: 36px;
-	--slider-margin: 3px;
+    --slider-margin: 3px;
+	--slider-size: calc(var(--settingsElementHeight) - var(--slider-margin)*2);
 
     position: relative;
 
@@ -121,8 +125,8 @@
     border-radius: calc(var(--slider-size) + var(--slider-margin)*2);
     background-color: hsl(332, 13%, 38%);
 
-    -webkit-transition: .3s;
-    transition: .3s;
+    -webkit-transition: background-color .3s;
+    transition: background-color .3s;
 
     cursor: pointer;
 }
@@ -139,8 +143,8 @@
     background-color: hsl(240, 3%, 65%);
     border-radius: 50%;
 
-    -webkit-transition: .3s;
-    transition: .3s;
+    -webkit-transition: transform .3s;
+    transition: transform .3s;
 }
   
 #matrix-font-checkbox:checked ~ .characters-font .switch .slider {
@@ -153,10 +157,6 @@
     -ms-transform: translateX(var(--slider-size));
 }
 
-
-
-
-
 .characters-settings-btns {
     grid-area: btns;
 
@@ -166,13 +166,38 @@
 }
 
 .btn-next-matrix {
-    width: min(260px, 100% - 14px);
-    height: 42px;
+    width: min(var(--settingsElementWidth), 100% - 14px);
+    height: var(--settingsElementHeight);
 
     margin-bottom: var(--margin);
 }
 
 .btn-back-input {
-    width: min(260px, 100% - 14px);
-    height: 42px;
+    width: min(var(--settingsElementWidth), 100% - 14px);
+    height: var(--settingsElementHeight);
+}
+
+@media (max-width: 630px) {
+    .screen-settings {
+        --settingsElementWidth: 180px;
+        --settingsElementHeight: 30px;
+        --fontSizeCoeff: .8;
+    }
+}
+
+@media (orientation: portrait), (max-width: 500px) {
+    .screen-settings {
+        grid-template-rows: repeat(4, 1fr);
+        grid-template-columns: 100%;
+        grid-template-areas:
+            "info"
+            "size"
+            "font"
+            "btns";
+    }
+
+    .screen-settings > * {
+        align-items: center;
+        justify-content: center;
+    }
 }
