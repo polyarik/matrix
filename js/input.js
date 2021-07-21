@@ -36,7 +36,18 @@ function chooseCharacters() {
         elements.characters.innerText = characters;
         checkboxes.screen.settings.checked = true;
     } else {
-        //TODO: animation
+        clearInput();
+        showInputError();
+    }
+}
+
+function showInputError() {
+    if (!checkboxes.inputError.checked) {
+        checkboxes.inputError.checked = true;
+
+        setTimeout(() => {
+            checkboxes.inputError.checked = false;
+        }, 200);
     }
 }
 

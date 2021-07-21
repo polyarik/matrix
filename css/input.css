@@ -20,6 +20,10 @@
     text-align: center;
 }
 
+#input-error-checkbox:checked ~ .input-info {
+    animation: red-blink .2s ease;
+}
+
 .characters-input {
 	width: calc(100% - 8px);
     height: 60px;
@@ -111,4 +115,10 @@
 
 #characters-correction-info-checkbox:checked ~ .characters-correction-info {
     opacity: 1;
+}
+
+@keyframes red-blink {
+	from { color: unset; }
+	50% { color: red; }
+	to { color: unset; }
 }

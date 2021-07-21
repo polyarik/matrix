@@ -21,6 +21,7 @@ function init() {
 			'matrix': document.querySelector("#screen-matrix-radio")
 		},
 		'charactersInput': document.querySelector("#characters-input-checkbox"),
+		'inputError': document.querySelector("#input-error-checkbox"),
 		'correction': document.querySelector("#characters-correction-checkbox"),
 		'correctionInfo': document.querySelector("#characters-correction-info-checkbox"),
 		'matrixFont': document.querySelector("#matrix-font-checkbox"),
