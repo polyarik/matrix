@@ -70,10 +70,10 @@ function moveField() {
 }
 
 function addCharacters() {
-    const newCharactersCount = getRandomInt(0, Math.floor(field[0].length * 2 / 3));
+    const newCharactersCount = getRandomInt(0, Math.floor(field[0].length / 2));
 
     for (let i = 0; i < newCharactersCount; i++) {
-        const inColumn = !getRandomInt(0, 3);
+        const inColumn = !getRandomInt(0, 2);
         let positions = [];
         let x;
 
