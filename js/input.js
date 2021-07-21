@@ -52,5 +52,5 @@ function showInputError() {
 }
 
 function saveCharacters() {
-    //request
+    setRequest("characters", characters);
 }

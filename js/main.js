@@ -45,11 +45,37 @@ function resize() {
 }
 
 async function syncSettings() {
-	//
+	const settings = await getRequest("all");
+
+	if (settings.characters && !elements.charactersInput.value) {
+		elements.charactersInput.value = settings.characters;
+		updateInput();
+	}
+
+	if (settings.fontSize) {
+		elements.sizeInput.value = settings.fontSize;
+		updateSize();
+	}
+
+	if (settings.matrixFont) {
+		checkboxes.matrixFont.checked = true;
+		matrixFont = true;
+	}
 }
 
-async function request() {
-	//
+async function setRequest(key, value) {
+	let data = `set=${key}&${key}=${value}`;
+
+	await fetch(`functions.php?${data}`);
+}
+
+async function getRequest(key=null) {
+	let data = `get=${key}`;
+
+	const response = await fetch(`functions.php?${data}`);
+	const result = await response.json();
+
+	return result;
 }
 
 function getRandomInt(min, max) {

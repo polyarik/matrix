@@ -9,7 +9,7 @@ function updateSize() {
 }
 
 function switchFont() {
-    matrixFont = !checkboxes.matrixFont.checked;
+    matrixFont = checkboxes.matrixFont.checked;
 }
 
 function confirmSettings() {
@@ -17,7 +17,7 @@ function confirmSettings() {
     runMatrix();
 }
 
-
 function saveSettings() {
-	//request
+    setRequest("fontSize", fontSize);
+    setRequest("matrixFont", matrixFont);
 }
