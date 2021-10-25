@@ -36,9 +36,16 @@ function init() {
 
 function resize() {
 	if (elements) {
-		elements.canvas.width = window.innerWidth;
-		elements.canvas.height = window.innerHeight;
-		
+		const width = window.innerWidth;
+		const height = window.innerHeight;
+		const scale = window.devicePixelRatio;
+
+		elements.canvas.style.width = width + "px";
+		elements.canvas.style.height = height + "px";
+
+		elements.canvas.width = Math.floor(width * scale);
+		elements.canvas.height = Math.floor(height * scale);
+
 		if (checkboxes?.screen.matrix.checked)
 			resizeMatrix();
 	}
